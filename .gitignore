@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+*.pyd
+*.pyo
+*.pdb
+*.log
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv/
+
+# VS Code settings
+.vscode/
+
+# Mac/Windows/Linux system files
+.DS_Store
+Thumbs.db
+
+# Data & Index files (可选忽略搜索索引和中间数据)
+data/*.json
+data/*.pkl
+data/*.bin

@@ -13,10 +13,10 @@ __pycache__/
 .ipynb_checkpoints
 
 # Virtual Environment
-venv/
-ENV/
-env/
-.venv/
+venv
+ENV
+env
+.venv
 
 # VS Code settings
 .vscode/

@@ -1,8 +1,10 @@
+requests
+beautifulsoup4
+sentence-transformers
 faiss-cpu
+numpy
+pandas
 flask
 flask-cors
 pyngrok
 openai
-numpy
-pandas
-sentence-transformers

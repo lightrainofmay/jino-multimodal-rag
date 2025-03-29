@@ -1,0 +1,8 @@
+faiss-cpu
+flask
+flask-cors
+pyngrok
+openai
+numpy
+pandas
+sentence-transformers

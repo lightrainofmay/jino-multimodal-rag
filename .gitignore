@@ -29,3 +29,4 @@ Thumbs.db
 data/*.json
 data/*.pkl
 data/*.bin
+.env

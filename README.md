@@ -24,13 +24,13 @@ git clone https://github.com/your-username/jino-rag.git
 cd jino-rag
 ### 1. Clone this repositoryCreate a .env file
 
-2. Create a .env file
+###2. Create a .env file
 OPENAI_API_KEY=your_openai_api_key
 
-3. Install dependencies
+###3. Install dependencies
 pip install -r requirements.txt
 
-4. Run the Flask app
+###4. Run the Flask app
 python run.py
 Then visit http://localhost:5000 in your browser.
 

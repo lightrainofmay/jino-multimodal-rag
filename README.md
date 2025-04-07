@@ -24,43 +24,61 @@ It combines web scraping, multilingual text embedding, vector indexing, and LLM-
 ```bash
 git clone https://github.com/your-username/jino-rag.git
 cd jino-rag
-### 2. Create a .env file
+```
+
+### 2. Create a `.env` file
+
 ```bash
 echo "OPENAI_API_KEY=your_openai_api_key" > .env
+```
+
 ### 3. Install dependencies
+
 ```bash
 pip install -r requirements.txt
-### 4.Run the Flask app
+```
+
+### 4. Run the Flask app
+
 ```bash
 python run.py
-Then visit http://localhost:5000 in your browser.
+```
 
-To expose it externally, you can use tools like Cloudflare Tunnel.
+Then visit [http://localhost:5000](http://localhost:5000) in your browser.
 
-Refresh Data
-To re-crawl the website and regenerate embeddings and FAISS index:
-curl http://localhost:5000/refresh
-
-Live Demo (Optional)
-You can visit the deployed project at:
-👉 https://jino-lan.site/
-
-Or access the repository:
-👉 https://github.com/your-username/jino-rag
-
-Acknowledgements
-OpenAI GPT-4
-
-moka-ai/m3e-base
-
-FAISS by Facebook AI
-
-BeautifulSoup
-
-License
-This project is licensed under the MIT License.
-```yaml
+To expose it externally, you can use tools like [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/).
 
 ---
 
-📌 **说明**：你可以将 `your-username` 替换为你自己的 GitHub 用户名（比如 `lightrainofmay`），并将 `image.png` 替换为你上传的目录结构图的文件名。需要我帮你预览或修复图像链接也可以告诉我！
+## Refresh Data
+
+To re-crawl the website and regenerate embeddings and FAISS index:
+
+```bash
+curl http://localhost:5000/refresh
+```
+
+---
+
+## Live Demo (Optional)
+
+You can visit the deployed project at:  
+🔗 https://jino-lan.site/
+
+Or access the repository:  
+🔗 https://github.com/your-username/jino-rag
+
+---
+
+## Acknowledgements
+
+- OpenAI GPT-4  
+- `moka-ai/m3e-base`  
+- FAISS by Facebook AI  
+- BeautifulSoup  
+
+---
+
+## License
+
+This project is licensed under the MIT License.

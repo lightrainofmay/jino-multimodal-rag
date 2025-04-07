@@ -3,21 +3,21 @@ import numpy as np
 import pandas as pd
 import os
 from dotenv import load_dotenv
-from openai import OpenAI  # ✅ 使用新版 API 客户端
+from openai import OpenAI  # Using the new OpenAI API client
 
 load_dotenv()
 
 def extract_keywords(query, api_key):
-    client = OpenAI(api_key=api_key)  # ✅ 新写法
+    client = OpenAI(api_key=api_key)  # New syntax
 
-    prompt = f"""请从下面的中文问题中提取最核心的搜索关键词：
+    prompt = f"""Please extract the most essential search keyword from the following Chinese question:
 
-1. 如果问题是 **"基诺语的X怎么说？"**，你应该只返回 **"X"**，不要返回 "基诺语"。
-2. 仅返回一个最相关的关键词。
-3. 不要返回句子或多余的解释，只返回关键词。
+1. If the question is **"How do you say X in Jino?"**, you should return only **"X"**, not "Jino".
+2. Return only one most relevant keyword.
+3. Do not return a sentence or any explanation, only the keyword.
 
-问题：{query}
-关键词："""
+Question: {query}
+Keyword:"""
 
     response = client.chat.completions.create(
         model="gpt-4",
@@ -25,12 +25,12 @@ def extract_keywords(query, api_key):
         max_tokens=5
     )
     keyword = response.choices[0].message.content.strip()
-    print(f"📝 提取关键词：{keyword}")
+    print(f"Extracted keyword: {keyword}")
     return keyword
 
 
 def semantic_search(query, df, index, model, top_k=5):
-    print(f"🔍 正在搜索：{query}")
+    print(f"Performing semantic search for: {query}")
     query_embedding = model.encode(query, normalize_embeddings=True).reshape(1, -1)
     _, indices = index.search(query_embedding, top_k)
     valid_indices = [i for i in indices[0] if i < len(df)]
@@ -45,8 +45,8 @@ def process_results(df, text_results):
     for text in text_results:
         files = text_to_files.get(text, [])
         output[text] = {
-            "images": [f for f in files if f.endswith((".jpg", ".png", ".webp"))] or ["暂无图片"],
-            "audios": [f for f in files if f.endswith((".mp3", ".wav", ".ogg"))] or ["暂无音频"],
+            "images": [f for f in files if f.endswith((".jpg", ".png", ".webp"))] or ["No image available"],
+            "audios": [f for f in files if f.endswith((".mp3", ".wav", ".ogg"))] or ["No audio available"],
         }
     return output
 
@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
-        raise ValueError("❌ 未在 .env 中找到 OPENAI_API_KEY")
+        raise ValueError("OPENAI_API_KEY not found in .env file")
 
     df = pd.read_json("data/jino_all_media.json", encoding="utf-8")
     index = faiss.read_index("data/faiss_index.bin")
@@ -69,8 +69,8 @@ if __name__ == "__main__":
     results = semantic_search(keyword, df, index, model)
     final = process_results(df, results)
 
-    print("\n🔎 检索结果：")
+    print("\nSearch Results:")
     for k, v in final.items():
-        print(f"\n📝 文本：{k}")
-        print(f"🖼️ 图片：{v['images']}")
-        print(f"🔊 音频：{v['audios']}")
+        print(f"\nText: {k}")
+        print(f"Images: {v['images']}")
+        print(f"Audios: {v['audios']}")

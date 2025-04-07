@@ -30,3 +30,4 @@ data/*.json
 data/*.pkl
 data/*.bin
 .env
+jino-multimodal-rag.tar

@@ -14,8 +14,7 @@ It combines web scraping, multilingual text embedding, vector indexing, and LLM-
 - Flask + Docker + Cloudflare Tunnel for deployment and UI
 
 ## Directory Structure
-
-. ├── api/ # Core Flask app and endpoints │ ├── app.py # Main API routes │ ├── crawler.py # Web crawler for WordPress TK site │ ├── embedder.py # Embedding and FAISS index functions │ └── search.py # Semantic search and keyword extraction ├── data/ # Cached JSON, embeddings, and index │ ├── jino_all_media.json │ ├── text_embeddings.pkl │ └── faiss_index.bin ├── run.py # App entry point ├── requirements.txt # Python dependencies └── README.md # Project description
+![alt text](image.png)
 
 ## Quick Start
 
